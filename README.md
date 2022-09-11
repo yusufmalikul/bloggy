@@ -8,7 +8,7 @@ Currently, bloggy is in a very early stage of development. It is not ready for p
 I wanted to create a simple blog generator that is easy to use. I prefer static sites because it's cheap to host and maintain. It also reduce security risks for your server.
 
 # Usage
-First, you need to prepare your blog posts content. Layouts directory must have `index.html` and `post.html`.
+First, you need to prepare your blog posts content. Layouts directory must have `index.html` and `post.html` see ([examples](examples))
 ```
 $ tree myblog
 myblog
