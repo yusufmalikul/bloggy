@@ -33,9 +33,11 @@ It will generate html files in `myblog/html` directory.
 $ tree myblog
 myblog
 ├── html
-│   ├── hello-world.html
+│   ├── hello-world
+│   │   └── index.html
 │   ├── index.html
-│   └── second-post.html
+│   └── second-post
+│       └── index.html
 ├── layouts
 │   ├── index.html
 │   └── post.html
