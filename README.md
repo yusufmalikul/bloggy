@@ -8,7 +8,7 @@ Currently, bloggy is in a very early stage of development. It is not ready for p
 I wanted to create a simple blog generator that is easy to use. I prefer static sites because it's cheap to host and maintain. It also reduce security risks for your server.
 
 # Usage
-First, you need to prepare your blog posts content. Layouts directory must have `index.html` and `post.html` see ([examples](examples/layouts)). Put your markdown files e.g. in `post` directory.
+First, you need to prepare your blog posts content. Layouts directory must have `index.html` and `post.html` see ([examples](examples/layouts)). Put your markdown files e.g. in `posts` directory.
 ```
 $ tree myblog
 myblog
@@ -20,7 +20,7 @@ myblog
     └── second-post.md
 ```
 
-Run this command to generate markdown file to your designated output directory.
+Run this command to generate markdown files to your designated output directory.
 
 ```
 $ bloggy --content myblog/posts --layouts myblog/layouts --output myblog/html
