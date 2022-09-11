@@ -55,5 +55,12 @@ Visit http://localhost:8080
 
 Visit http://localhost:8080 to see your blog. You can also deploy the static files (`myblog/html`) to your server.
 
+# Styling
+You can style your blog by editing `index.html` and `post.html` in `layouts` directory. Bloggy uses [Go's template](https://golang.org/pkg/text/template/). The available variables are:
+
+- `Title` - title of the post
+- `Body` - body of the post
+- `Path` - path of the post
+
 # License
 MIT
