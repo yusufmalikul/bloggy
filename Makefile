@@ -13,4 +13,4 @@ clean:
 	rm -f ${BINARY_NAME}
 
 format:
-	gofmt -w *.go cmd/*
+	gofmt -w *.go cmd/* pkg/*

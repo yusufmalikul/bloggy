@@ -4,6 +4,10 @@ import (
 	"bytes"
 	"fmt"
 	"os"
+	"text/template"
+	"time"
+
+	"github.com/yusufmalikul/bloggy/pkg/slug"
 
 	"github.com/spf13/cobra"
 	"github.com/yuin/goldmark"
@@ -25,8 +29,20 @@ func Execute() {
 	}
 }
 
+type Post struct {
+	Title string
+	Body  string
+	Path  string
+}
+
+type Posts struct {
+	Posts []Post
+}
+
 func generate() {
 	fmt.Println("Generating...")
+	t := time.Now()
+	var posts Posts
 	sourceDir := "examples/posts"
 	destinationDir := "examples/html"
 
@@ -52,12 +68,48 @@ func generate() {
 		}
 
 		// write the html
-		err = os.WriteFile(destinationDir+"/"+file.Name()+".html", buf.Bytes(), 0644)
+		// remove .md from the file name
+		fileName := file.Name()
+		fileName = fileName[:len(fileName)-3]
+		err = os.WriteFile(destinationDir+"/"+fileName+".html", buf.Bytes(), 0644)
 		if err != nil {
 			fmt.Println(err)
 			return
 		}
+
+		// Store post title and body
+		posts.Posts = append(posts.Posts, Post{Title: slug.Slugify(fileName), Body: buf.String(), Path: slug.Slugify(fileName) + ".html"})
 	}
 
-	fmt.Println("Done!")
+	// generate the index
+	indexLayout := "examples/layouts/index.html"
+	indexTemplate, err := os.ReadFile(indexLayout)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	// compile the template
+	tmpl, err := template.New("index").Parse(string(indexTemplate))
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	// write the template
+	destinationIndex := destinationDir + "/index.html"
+	f, err := os.Create(destinationIndex)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	// execute the template
+	err = tmpl.Execute(f, posts)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	fmt.Println("Done in", time.Since(t))
 }

@@ -17,3 +17,5 @@
 # bloggy binary
 out/*
 !out/.gitkeep
+
+.DS_Store
