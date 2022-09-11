@@ -1,7 +1,13 @@
 BINARY_NAME=bloggy
 
+PACKAGE=github.com/yusufmalikul/bloggy
+VERSION=1.0.0
+COMMIT=$(shell git rev-parse --short HEAD)
+BUILD_TIMESTAMP=$(shell date -u)
+LDFLAGS="-X '${PACKAGE}/cmd.Version=${VERSION}' -X '${PACKAGE}/cmd.Commit=${COMMIT}' -X '${PACKAGE}/cmd.BuildTimestamp=${BUILD_TIMESTAMP}'"
+
 build:
-	go build -o out/${BINARY_NAME} main.go
+	go build -ldflags=${LDFLAGS} -o out/${BINARY_NAME} main.go
 
 run:
 	out/${BINARY_NAME}
