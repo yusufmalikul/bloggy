@@ -15,15 +15,18 @@ import (
 )
 
 func init() {
-	rootCmd.Flags().String("content", "content", "Content directory")
-	rootCmd.Flags().String("layouts", "layouts", "Layouts directory")
-	rootCmd.Flags().String("output", "output", "Output directory")
+	rootCmd.Flags().String("content", "", "Content directory")
+	rootCmd.Flags().String("layouts", "", "Layouts directory")
+	rootCmd.Flags().String("output", "", "Output directory")
+	rootCmd.MarkFlagRequired("content")
+	rootCmd.MarkFlagRequired("layouts")
+	rootCmd.MarkFlagRequired("output")
 }
 
 var rootCmd = &cobra.Command{
 	Use:   "bloggy",
 	Short: "Bloggy is a simple and stup*d blog generator",
-	Long:  `A simple and stup*d blog generator written in Go.`,
+	Long:  `A simple and stup*d static blog generator written in Go (https://github.com/yusufmalikul/bloggy).`,
 	Run: func(cmd *cobra.Command, args []string) {
 
 		// get flags
