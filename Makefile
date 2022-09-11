@@ -11,3 +11,6 @@ build_and_run: build run
 clean:
 	go clean
 	rm -f ${BINARY_NAME}
+
+format:
+	gofmt -w *.go cmd/*
