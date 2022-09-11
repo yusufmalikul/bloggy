@@ -14,9 +14,9 @@ import (
 )
 
 func init() {
-	rootCmd.PersistentFlags().String("content", "content", "Content directory")
-	rootCmd.PersistentFlags().String("layouts", "layouts", "Layouts directory")
-	rootCmd.PersistentFlags().String("output", "output", "Output directory")
+	rootCmd.LocalFlags().String("content", "content", "Content directory")
+	rootCmd.LocalFlags().String("layouts", "layouts", "Layouts directory")
+	rootCmd.LocalFlags().String("output", "output", "Output directory")
 }
 
 var rootCmd = &cobra.Command{
