@@ -16,4 +16,7 @@ After that, you can start bloggy as a server.
 bloggy server
 ```
 
-Visit http://localhost:8080 to see your blog.
+Visit http://localhost:8080 to see your blog. You can also deploy the static files to your server.
+
+# License
+MIT
