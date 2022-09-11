@@ -2,7 +2,7 @@
 A simple and stup*d static blog generator written in Go.
 
 # Status
-Currently, bloggy is in a very early stage of development. It is not ready for production use.
+Maintained by me.
 
 # Why
 I wanted to create a simple blog generator that is easy to use. I prefer static sites because it's cheap to host and maintain. It also reduce security risks for your server.
