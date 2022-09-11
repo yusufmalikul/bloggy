@@ -8,7 +8,9 @@ Maintained by me.
 I wanted to create a simple blog generator that is easy to use. I prefer static sites because it's cheap to host and maintain. It also reduce security risks for your server.
 
 # Usage
-First, you need to prepare your blog posts content. Layouts directory must have `index.html` and `post.html` see ([examples](examples/layouts)). Put your markdown files e.g. in `posts` directory.
+First, download the release binary [here](https://github.com/yusufmalikul/bloggy/releases/tag/v1.0.0).
+
+Then you need to prepare your blog posts content. Layouts directory must have `index.html` and `post.html` see ([examples](examples/layouts)). Put your markdown files e.g. in `posts` directory.
 ```
 $ tree myblog
 myblog
