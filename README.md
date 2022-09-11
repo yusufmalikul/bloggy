@@ -25,7 +25,7 @@ Run this command to generate markdown file to your designated output directory.
 ```
 $ bloggy --content myblog/posts --layouts myblog/layouts --output myblog/html
 Generating...
-Done in 2.131284ms
+Done in 952.06µs
 ```
 
 It will generate html files in `myblog/html` directory.

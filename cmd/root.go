@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"fmt"
 	"os"
+	"path"
 	"text/template"
 	"time"
 
@@ -85,18 +86,12 @@ func generate(content, layouts, output string) {
 			return
 		}
 
-		// write the html
 		// remove .md from the file name
 		fileName := file.Name()
 		fileName = fileName[:len(fileName)-3]
-		err = os.WriteFile(output+"/"+fileName+".html", buf.Bytes(), 0644)
-		if err != nil {
-			fmt.Println(err)
-			return
-		}
 
 		// Store post title and body
-		posts.Posts = append(posts.Posts, Post{Title: slug.Slugify(fileName), Body: buf.String(), Path: slug.Slugify(fileName) + ".html"})
+		posts.Posts = append(posts.Posts, Post{Title: slug.Slugify(fileName), Body: buf.String(), Path: slug.Slugify(fileName)})
 	}
 
 	// generate the index
@@ -146,7 +141,15 @@ func generate(content, layouts, output string) {
 
 	// write the template
 	for _, post := range posts.Posts {
-		destinationPost := output + "/" + post.Path
+
+		// create the post dir
+		err = os.MkdirAll(output+"/"+post.Path, 0755)
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+
+		destinationPost := path.Join(output, post.Path, "index.html")
 		f, err := os.Create(destinationPost)
 		if err != nil {
 			fmt.Println(err)
