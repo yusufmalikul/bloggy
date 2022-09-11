@@ -10,7 +10,7 @@ I wanted to create a simple blog generator that is easy to use. I prefer static 
 # Usage
 First, you need to prepare your blog posts content.
 ```
-❯ tree myblog
+$ tree myblog
 myblog
 ├── layouts
 │   ├── index.html
@@ -23,12 +23,14 @@ myblog
 Run this command to generate markdown file to your designated output directory.
 
 ```
-bloggy --content myblog/posts --layouts myblog/layouts --output myblog/html
+$ bloggy --content myblog/posts --layouts myblog/layouts --output myblog/html
+Generating...
+Done in 2.131284ms
 ```
 
 It will generate html files in `myblog/html` directory.
 ```
-❯ tree myblog
+$ tree myblog
 myblog
 ├── html
 │   ├── hello-world.html
@@ -44,7 +46,9 @@ myblog
 
 After that, you can start bloggy as a server.
 ```
-bloggy server
+$ bloggy server --dir myblog/html
+Listening...
+Visit http://localhost:8080
 ```
 
 Visit http://localhost:8080 to see your blog. You can also deploy the static files (`myblog/html`) to your server.
