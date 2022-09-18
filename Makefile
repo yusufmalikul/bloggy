@@ -7,7 +7,7 @@ BUILD_TIMESTAMP=$(shell date -u)
 LDFLAGS="-X '${PACKAGE}/cmd.Version=${VERSION}' -X '${PACKAGE}/cmd.Commit=${COMMIT}' -X '${PACKAGE}/cmd.BuildTimestamp=${BUILD_TIMESTAMP}' -s -w"
 
 build:
-	GOOS=win go build -trimpath -ldflags=${LDFLAGS} -o out/${BINARY_NAME} main.go
+	go build -trimpath -ldflags=${LDFLAGS} -o out/${BINARY_NAME} main.go
 
 run:
 	out/${BINARY_NAME}
