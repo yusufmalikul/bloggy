@@ -5,10 +5,13 @@ import (
 	"fmt"
 	"os"
 	"path"
+	"strings"
 	"text/template"
 	"time"
 
 	"github.com/yusufmalikul/bloggy/pkg/slug"
+	"golang.org/x/text/cases"
+	"golang.org/x/text/language"
 
 	"github.com/spf13/cobra"
 	"github.com/yuin/goldmark"
@@ -67,6 +70,7 @@ func generate(content, layouts, output string) {
 		return
 	}
 
+	caser := cases.Title(language.English)
 	for _, file := range files {
 		// read the file
 		data, err := os.ReadFile(content + "/" + file.Name())
@@ -94,7 +98,7 @@ func generate(content, layouts, output string) {
 		fileName = fileName[:len(fileName)-3]
 
 		// Store post title and body
-		posts.Posts = append(posts.Posts, Post{Title: slug.Slugify(fileName), Body: buf.String(), Path: slug.Slugify(fileName)})
+		posts.Posts = append(posts.Posts, Post{Title: caser.String(strings.ReplaceAll(slug.Slugify(fileName), "-", " ")), Body: buf.String(), Path: slug.Slugify(fileName)})
 	}
 
 	// generate the index
