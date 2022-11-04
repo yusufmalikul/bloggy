@@ -10,6 +10,11 @@ I wanted to create a simple blog generator that is easy to use. I prefer static 
 # Usage
 First, download the release binary [here](https://github.com/yusufmalikul/bloggy/releases/tag/v1.0.0).
 
+You can also build it yourself if you have Go installed:
+```
+$ go install github.com/yusufmalikul/bloggy@latest
+```
+
 Then you need to prepare your blog posts content. Layouts directory must have `index.html` and `post.html` see ([examples](examples/layouts)). Put your markdown files e.g. in `posts` directory.
 ```
 $ tree myblog
